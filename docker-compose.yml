@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  jenkins:
+    build: ./jenkins_ci
+    container_name: jenkins
+    privileged: true
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+      - "8090:8090"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    restart: always
+    networks:
+      - devops
+
+  sonarqube:
+    image: sonarqube:community
+    container_name: sonarqube
+    volumes:
+      - ./sonarqube_data:/opt/sonarqube/data
+      - ./sonarqube_extensions:/opt/sonarqube/extensions
+      - ./sonarqube_logs:/opt/sonarqube/logs
+    ports:
+      - "9000:9000"
+    restart: always
+    networks:
+      - devops
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    restart: always
+    volumes:
+      - ./prometheus:/etc/prometheus
+    networks:
+      - devops
+  
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    restart: always
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    networks:
+      - devops
+
+networks:
+  devops:

@@ -1,0 +1,540 @@
+Started by an SCM change
+Checking out git https://github.com/bintangadinandra/spring-petclinic-devops-group3.git into /var/jenkins_home/workspace/spring-petclinic-pipeline@script/aff91bd9e172fe95abe4d58da4e2d36262987a41dc40e647568a1299507a9dce to read Jenkinsfile
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/spring-petclinic-pipeline@script/aff91bd9e172fe95abe4d58da4e2d36262987a41dc40e647568a1299507a9dce/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/bintangadinandra/spring-petclinic-devops-group3.git # timeout=10
+Fetching upstream changes from https://github.com/bintangadinandra/spring-petclinic-devops-group3.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/bintangadinandra/spring-petclinic-devops-group3.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision af099e1e1c09b1c2260e5f89b391bd4a0592a106 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f af099e1e1c09b1c2260e5f89b391bd4a0592a106 # timeout=10
+Commit message: "This message is a demonstration"
+ > git rev-list --no-walk 50ef1389cad89d4aa5f5b2b85caabce29ffa56c6 # timeout=10
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/spring-petclinic-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/spring-petclinic-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/bintangadinandra/spring-petclinic-devops-group3.git # timeout=10
+Fetching upstream changes from https://github.com/bintangadinandra/spring-petclinic-devops-group3.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/bintangadinandra/spring-petclinic-devops-group3.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision af099e1e1c09b1c2260e5f89b391bd4a0592a106 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f af099e1e1c09b1c2260e5f89b391bd4a0592a106 # timeout=10
+Commit message: "This message is a demonstration"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Clean)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ rm testreport.html
+[Pipeline] sh
++ rm zap.yaml
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] sh
++ ./mvnw clean package -DskipTests
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------< org.springframework.samples:spring-petclinic >------------
+[INFO] Building petclinic 3.3.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ spring-petclinic ---
+[INFO] Deleting /var/jenkins_home/workspace/spring-petclinic-pipeline/target
+[INFO] 
+[INFO] --- enforcer:3.4.1:enforce (enforce-java) @ spring-petclinic ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- spring-javaformat:0.0.41:validate (default) @ spring-petclinic ---
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (nohttp-checkstyle-validation) @ spring-petclinic ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (default) @ spring-petclinic ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.12/org.jacoco.agent-0.8.12-runtime.jar=destfile=/var/jenkins_home/workspace/spring-petclinic-pipeline/target/jacoco.exec
+[INFO] 
+[INFO] --- git-commit-id:8.0.2:revision (default) @ spring-petclinic ---
+[INFO] dotGitDirectory '/var/jenkins_home/workspace/spring-petclinic-pipeline/.git'
+[INFO] Collected git.build.user.name with value 
+[INFO] Collected git.build.user.email with value 
+[INFO] Using environment variable based branch name. GIT_BRANCH = origin/main
+[INFO] Collected git.branch with value origin/main
+[INFO] Collected git.commit.id.describe with value af099e1
+[INFO] Collected git.commit.id.describe-short with value af099e1
+[INFO] Collected git.commit.id with value af099e1e1c09b1c2260e5f89b391bd4a0592a106
+[INFO] Collected git.commit.id.abbrev with value af099e1
+[INFO] Collected git.dirty with value false
+[INFO] Collected git.commit.user.name with value daniel
+[INFO] Collected git.commit.user.email with value danielhales8@gmail.com
+[INFO] Collected git.commit.message.full with value This message is a demonstration
+[INFO] Collected git.commit.message.short with value This message is a demonstration
+[INFO] Collected git.commit.time with value 2024-07-25T14:00:53Z
+[INFO] Collected git.commit.author.time with value 2024-07-25T14:00:53Z
+[INFO] Collected git.commit.committer.time with value 2024-07-25T14:00:53Z
+[INFO] Collected git.remote.origin.url with value https://github.com/bintangadinandra/spring-petclinic-devops-group3.git
+[INFO] Collected git.tags with value 
+[INFO] Collected git.tag with value 
+[INFO] Collected git.closest.tag.name with value 
+[INFO] Collected git.closest.tag.commit.count with value 
+[INFO] Collected git.total.commit.count with value 997
+[INFO] Collected git.local.branch.ahead with value NO_REMOTE
+[INFO] Collected git.local.branch.behind with value NO_REMOTE
+[INFO] Collected git.build.time with value 2023-05-10T07:42:50Z
+[INFO] Collected git.build.version with value 3.3.0-SNAPSHOT
+[INFO] Collected git.build.host with value 75b0142c7768
+[INFO] Collected git.build.number with value 2
+[INFO] including property 'git.tags' in results
+[INFO] including property 'git.build.version' in results
+[INFO] including property 'git.branch' in results
+[INFO] including property 'git.build.host' in results
+[INFO] including property 'git.build.number' in results
+[INFO] including property 'git.commit.id' in results
+[INFO] including property 'git.commit.user.email' in results
+[INFO] including property 'git.local.branch.behind' in results
+[INFO] including property 'git.commit.author.time' in results
+[INFO] including property 'git.build.user.name' in results
+[INFO] including property 'git.dirty' in results
+[INFO] including property 'git.closest.tag.commit.count' in results
+[INFO] including property 'git.commit.user.name' in results
+[INFO] including property 'git.commit.id.abbrev' in results
+[INFO] including property 'git.commit.id.describe-short' in results
+[INFO] including property 'git.total.commit.count' in results
+[INFO] including property 'git.commit.id.describe' in results
+[INFO] including property 'git.build.user.email' in results
+[INFO] including property 'git.commit.message.short' in results
+[INFO] including property 'git.commit.committer.time' in results
+[INFO] including property 'git.tag' in results
+[INFO] including property 'git.closest.tag.name' in results
+[INFO] including property 'git.local.branch.ahead' in results
+[INFO] including property 'git.commit.time' in results
+[INFO] including property 'git.build.time' in results
+[INFO] including property 'git.commit.message.full' in results
+[INFO] including property 'git.remote.origin.url' in results
+[INFO] Writing properties file [/var/jenkins_home/workspace/spring-petclinic-pipeline/target/classes/git.properties] (for project petclinic)...
+[INFO] 
+[INFO] --- spring-boot:3.3.0:build-info (default) @ spring-petclinic ---
+[INFO] 
+[INFO] --- cyclonedx:2.8.0:makeAggregateBom (default) @ spring-petclinic ---
+[INFO] CycloneDX: Resolving Dependencies
+[INFO] CycloneDX: Creating BOM version 1.5 with 88 component(s)
+[INFO] CycloneDX: Writing and validating BOM (JSON): /var/jenkins_home/workspace/spring-petclinic-pipeline/target/classes/META-INF/sbom/application.cdx.json
+[INFO]            attaching as spring-petclinic-3.3.0-SNAPSHOT-cyclonedx.json
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ spring-petclinic ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 43 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ spring-petclinic ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 24 source files with javac [debug parameters release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ spring-petclinic ---
+[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/spring-petclinic-pipeline/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ spring-petclinic ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 15 source files with javac [debug parameters release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ spring-petclinic ---
+[WARNING]  Parameter 'systemProperties' is deprecated: Use systemPropertyVariables instead.
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jacoco:0.8.12:report (report) @ spring-petclinic ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ spring-petclinic ---
+[INFO] Building jar: /var/jenkins_home/workspace/spring-petclinic-pipeline/target/spring-petclinic-3.3.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.3.0:repackage (repackage) @ spring-petclinic ---
+[INFO] Replacing main artifact /var/jenkins_home/workspace/spring-petclinic-pipeline/target/spring-petclinic-3.3.0-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /var/jenkins_home/workspace/spring-petclinic-pipeline/target/spring-petclinic-3.3.0-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.206 s
+[INFO] Finished at: 2024-07-25T14:02:19Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $SNQ_TOKEN
+[Pipeline] {
+[Pipeline] sh
++ ./mvnw sonar:sonar -Dsonar.projectKey=Spring-Petclinic -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=****
+[INFO] Scanning for projects...
+[WARNING] The artifact org.codehaus.mojo:sonar-maven-plugin:jar:4.0.0.4121 has been relocated to org.sonarsource.scanner.maven:sonar-maven-plugin:jar:4.0.0.4121: SonarQube plugin was moved to SonarSource organisation
+[INFO] 
+[INFO] ------------< org.springframework.samples:spring-petclinic >------------
+[INFO] Building petclinic 3.3.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- sonar:4.0.0.4121:sonar (default-cli) @ spring-petclinic ---
+[WARNING] 14:02:22.002 Using an unspecified version instead of an explicit plugin version may introduce breaking analysis changes at an unwanted time. It is highly recommended to use an explicit version, e.g. 'org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121'.
+[INFO] 14:02:22.009 Java 17.0.11 Eclipse Adoptium (64-bit)
+[INFO] 14:02:22.010 Linux 6.6.16-linuxkit (aarch64)
+[INFO] 14:02:22.121 User cache: /root/.sonar/cache
+[INFO] 14:02:22.177 Communicating with SonarQube Server 10.6.0.92116
+[INFO] 14:02:22.189 Default locale: "en", source code encoding: "UTF-8"
+[INFO] 14:02:22.657 Load global settings
+[INFO] 14:02:22.727 Load global settings (done) | time=69ms
+[INFO] 14:02:22.737 Server id: 147B411E-AZDgViZY4I5XtapkORdU
+[INFO] 14:02:22.743 Loading required plugins
+[INFO] 14:02:22.743 Load plugins index
+[INFO] 14:02:22.777 Load plugins index (done) | time=34ms
+[INFO] 14:02:22.778 Load/download plugins
+[INFO] 14:02:22.804 Load/download plugins (done) | time=26ms
+[INFO] 14:02:22.985 Process project properties
+[INFO] 14:02:22.991 Process project properties (done) | time=6ms
+[INFO] 14:02:22.995 Project key: Spring-Petclinic
+[INFO] 14:02:22.996 Base dir: /var/jenkins_home/workspace/spring-petclinic-pipeline
+[INFO] 14:02:22.996 Working dir: /var/jenkins_home/workspace/spring-petclinic-pipeline/target/sonar
+[INFO] 14:02:23.001 Load project settings for component key: 'Spring-Petclinic'
+[INFO] 14:02:23.040 Load project settings for component key: 'Spring-Petclinic' (done) | time=39ms
+[INFO] 14:02:23.075 Load quality profiles
+[INFO] 14:02:23.182 Load quality profiles (done) | time=107ms
+[INFO] 14:02:23.216 Load active rules
+[INFO] 14:02:26.696 Load active rules (done) | time=3480ms
+[INFO] 14:02:26.699 Load analysis cache
+[INFO] 14:02:26.709 Load analysis cache (1.8 kB) | time=10ms
+[WARNING] 14:02:26.728 The property 'sonar.login' is deprecated and will be removed in the future. Please use the 'sonar.token' property instead when passing a token.
+[INFO] 14:02:26.735 Preprocessing files...
+[INFO] 14:02:26.855 2 languages detected in 40 preprocessed files
+[INFO] 14:02:26.856 0 files ignored because of scm ignore settings
+[INFO] 14:02:26.857 Loading plugins for detected languages
+[INFO] 14:02:26.858 Load/download plugins
+[INFO] 14:02:26.866 Load/download plugins (done) | time=8ms
+[INFO] 14:02:26.920 Load project repositories
+[INFO] 14:02:26.934 Load project repositories (done) | time=15ms
+[INFO] 14:02:26.940 Indexing files...
+[INFO] 14:02:26.941 Project configuration:
+[INFO] 14:02:26.948 40 files indexed
+[INFO] 14:02:26.949 Quality profile for java: Sonar way
+[INFO] 14:02:26.950 Quality profile for xml: Sonar way
+[INFO] 14:02:26.950 ------------- Run sensors on module petclinic
+[INFO] 14:02:26.986 Load metrics repository
+[INFO] 14:02:27.006 Load metrics repository (done) | time=20ms
+[INFO] 14:02:27.510 Sensor JavaSensor [java]
+[INFO] 14:02:27.514 Configured Java source version (sonar.java.source): 17, preview features enabled (sonar.java.enablePreview): false
+[INFO] 14:02:27.529 Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+[INFO] 14:02:27.530 Using ECJ batch to parse 24 Main java source files with batch size 102 KB.
+[INFO] 14:02:27.728 Starting batch processing.
+[INFO] 14:02:28.002 The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+[INFO] 14:02:29.083 100% analyzed
+[INFO] 14:02:29.083 Batch processing: Done.
+[INFO] 14:02:29.085 Did not optimize analysis for any files, performed a full analysis for all 24 files.
+[INFO] 14:02:29.086 Using ECJ batch to parse 15 Test java source files with batch size 102 KB.
+[INFO] 14:02:29.101 Starting batch processing.
+[INFO] 14:02:29.826 100% analyzed
+[INFO] 14:02:29.827 Batch processing: Done.
+[INFO] 14:02:29.828 Did not optimize analysis for any files, performed a full analysis for all 15 files.
+[INFO] 14:02:29.829 No "Generated" source files to scan.
+[INFO] 14:02:29.829 Sensor JavaSensor [java] (done) | time=2319ms
+[INFO] 14:02:29.831 Sensor SurefireSensor [java]
+[INFO] 14:02:29.833 parsing [/var/jenkins_home/workspace/spring-petclinic-pipeline/target/surefire-reports]
+[INFO] 14:02:29.834 Sensor SurefireSensor [java] (done) | time=3ms
+[INFO] 14:02:29.835 Sensor XML Sensor [xml]
+[INFO] 14:02:29.841 1 source file to be analyzed
+[INFO] 14:02:29.969 1/1 source file has been analyzed
+[INFO] 14:02:29.969 Sensor XML Sensor [xml] (done) | time=134ms
+[INFO] 14:02:29.970 Sensor JaCoCo XML Report Importer [jacoco]
+[INFO] 14:02:29.971 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+[INFO] 14:02:29.972 No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+[INFO] 14:02:29.972 Sensor JaCoCo XML Report Importer [jacoco] (done) | time=2ms
+[INFO] 14:02:29.973 Sensor Java Config Sensor [iac]
+[INFO] 14:02:29.977 0 source files to be analyzed
+[INFO] 14:02:29.983 0/0 source files have been analyzed
+[INFO] 14:02:29.984 Sensor Java Config Sensor [iac] (done) | time=11ms
+[INFO] 14:02:29.984 Sensor IaC Docker Sensor [iac]
+[INFO] 14:02:29.985 0 source files to be analyzed
+[INFO] 14:02:30.019 0/0 source files have been analyzed
+[INFO] 14:02:30.020 Sensor IaC Docker Sensor [iac] (done) | time=36ms
+[INFO] 14:02:30.020 Sensor TextAndSecretsSensor [text]
+[INFO] 14:02:30.021 Available processors: 8
+[INFO] 14:02:30.021 Using 8 threads for analysis.
+[INFO] 14:02:30.225 Using git CLI to retrieve untracked files
+[INFO] 14:02:30.279 Analyzing language associated files and files included via "sonar.text.inclusions" that are tracked by git
+[INFO] 14:02:30.305 40 source files to be analyzed
+[INFO] 14:02:30.366 40/40 source files have been analyzed
+[INFO] 14:02:30.367 Sensor TextAndSecretsSensor [text] (done) | time=347ms
+[INFO] 14:02:30.381 ------------- Run sensors on project
+[INFO] 14:02:30.423 Sensor Zero Coverage Sensor
+[INFO] 14:02:30.448 Sensor Zero Coverage Sensor (done) | time=24ms
+[INFO] 14:02:30.448 Sensor Java CPD Block Indexer
+[INFO] 14:02:30.489 Sensor Java CPD Block Indexer (done) | time=41ms
+[INFO] 14:02:30.522 CPD Executor 10 files had no CPD blocks
+[INFO] 14:02:30.522 CPD Executor Calculating CPD for 14 files
+[INFO] 14:02:30.533 CPD Executor CPD calculation finished (done) | time=10ms
+[INFO] 14:02:30.539 SCM revision ID 'af099e1e1c09b1c2260e5f89b391bd4a0592a106'
+[INFO] 14:02:30.677 Analysis report generated in 114ms, dir size=402.8 kB
+[INFO] 14:02:33.103 Analysis report compressed in 2424ms, zip size=139.4 kB
+[INFO] 14:02:33.205 Analysis report uploaded in 99ms
+[INFO] 14:02:33.207 ANALYSIS SUCCESSFUL, you can find the results at: http://sonarqube:9000/dashboard?id=Spring-Petclinic
+[INFO] 14:02:33.207 Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[INFO] 14:02:33.207 More about the report processing at http://sonarqube:9000/api/ce/task?id=6968e8ff-12cb-4a38-bdef-59be21802586
+[INFO] 14:02:33.273 Analysis total time: 10.442 s
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.017 s
+[INFO] Finished at: 2024-07-25T14:02:33Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] echo
+(Please use this) Host SonarQube Dashboard URL: http://localhost:9000/dashboard?id=Spring-Petclinic
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run OWASP ZAP)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ echo+ java 5973
+ -jar target/spring-petclinic-3.3.0-SNAPSHOT.jar
+[Pipeline] sleep
+Sleeping for 30 sec
+[Pipeline] sh
++ docker pull zaproxy/zap-stable
+Using default tag: latest
+latest: Pulling from zaproxy/zap-stable
+Digest: sha256:97b8efbc3556f4b3a39cbeb753ede2e2476dd35297bbcd1723a5198b4ba92bb4
+Status: Image is up to date for zaproxy/zap-stable:latest
+docker.io/zaproxy/zap-stable:latest
+[Pipeline] sh
++ pwd
++ hostname -i
++ docker run --privileged -v /var/jenkins_home/workspace/spring-petclinic-pipeline:/zap/wrk/:rw -t --name owasp-zap zaproxy/zap-stable zap-baseline.py -t http://172.18.0.4:3000 -r testreport.html
+Using the Automation Framework
+Total of 28 URLs
+PASS: Vulnerable JS Library (Powered by Retire.js) [10003]
+PASS: In Page Banner Information Leak [10009]
+PASS: Cookie No HttpOnly Flag [10010]
+PASS: Cookie Without Secure Flag [10011]
+PASS: Re-examine Cache-control Directives [10015]
+PASS: Content-Type Header Missing [10019]
+PASS: Information Disclosure - Sensitive Information in URL [10024]
+PASS: Information Disclosure - Sensitive Information in HTTP Referrer Header [10025]
+PASS: HTTP Parameter Override [10026]
+PASS: Open Redirect [10028]
+PASS: Cookie Poisoning [10029]
+PASS: User Controllable Charset [10030]
+PASS: Viewstate [10032]
+PASS: Directory Browsing [10033]
+PASS: Heartbleed OpenSSL Vulnerability (Indicative) [10034]
+PASS: Strict-Transport-Security Header [10035]
+PASS: HTTP Server Response Header [10036]
+PASS: Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s) [10037]
+PASS: X-Backend-Server Header Information Leak [10039]
+PASS: Secure Pages Include Mixed Content [10040]
+PASS: HTTP to HTTPS Insecure Transition in Form Post [10041]
+PASS: HTTPS to HTTP Insecure Transition in Form Post [10042]
+PASS: User Controllable JavaScript Event (XSS) [10043]
+PASS: Big Redirect Detected (Potential Sensitive Information Leak) [10044]
+PASS: Retrieved from Cache [10050]
+PASS: X-ChromeLogger-Data (XCOLD) Header Information Leak [10052]
+PASS: Cookie without SameSite Attribute [10054]
+PASS: CSP [10055]
+PASS: X-Debug-Token Information Leak [10056]
+PASS: Username Hash Found [10057]
+PASS: X-AspNet-Version Response Header [10061]
+PASS: PII Disclosure [10062]
+PASS: Timestamp Disclosure [10096]
+PASS: Hash Disclosure [10097]
+PASS: Cross-Domain Misconfiguration [10098]
+PASS: Source Code Disclosure [10099]
+PASS: Weak Authentication Method [10105]
+PASS: Reverse Tabnabbing [10108]
+PASS: Modern Web Application [10109]
+PASS: Dangerous JS Functions [10110]
+PASS: Authentication Request Identified [10111]
+PASS: Session Management Response Identified [10112]
+PASS: Verification Request Identified [10113]
+PASS: Script Served From Malicious Domain (polyfill) [10115]
+PASS: Private IP Disclosure [2]
+PASS: Session ID in URL Rewrite [3]
+PASS: Script Passive Scan Rules [50001]
+PASS: Stats Passive Scan Rule [50003]
+PASS: Insecure JSF ViewState [90001]
+PASS: Java Serialization Object [90002]
+PASS: Insufficient Site Isolation Against Spectre Vulnerability [90004]
+PASS: Charset Mismatch [90011]
+PASS: WSDL File Detection [90030]
+PASS: Loosely Scoped Cookie [90033]
+WARN-NEW: Cross-Domain JavaScript Source File Inclusion [10017] x 16 
+	http://172.18.0.4:3000 (200 OK)
+	http://172.18.0.4:3000 (200 OK)
+	http://172.18.0.4:3000/ (200 OK)
+	http://172.18.0.4:3000/ (200 OK)
+	http://172.18.0.4:3000/owners/find (200 OK)
+WARN-NEW: Missing Anti-clickjacking Header [10020] x 9 
+	http://172.18.0.4:3000 (200 OK)
+	http://172.18.0.4:3000/ (200 OK)
+	http://172.18.0.4:3000/owners/find (200 OK)
+	http://172.18.0.4:3000/owners/new (200 OK)
+	http://172.18.0.4:3000/owners?lastName=ZAP (200 OK)
+WARN-NEW: X-Content-Type-Options Header Missing [10021] x 12 
+	http://172.18.0.4:3000 (200 OK)
+	http://172.18.0.4:3000/ (200 OK)
+	http://172.18.0.4:3000/owners/find (200 OK)
+	http://172.18.0.4:3000/owners/new (200 OK)
+	http://172.18.0.4:3000/owners?lastName=ZAP (200 OK)
+WARN-NEW: Information Disclosure - Debug Error Messages [10023] x 1 
+	http://172.18.0.4:3000/oups (500 Internal Server Error)
+WARN-NEW: Information Disclosure - Suspicious Comments [10027] x 1 
+	http://172.18.0.4:3000/webjars/bootstrap/5.3.3/dist/js/bootstrap.bundle.min.js (200 OK)
+WARN-NEW: User Controllable HTML Element Attribute (Potential XSS) [10031] x 7 
+	http://172.18.0.4:3000/owners?lastName=ZAP (200 OK)
+	http://172.18.0.4:3000/vets.html?page=1 (200 OK)
+	http://172.18.0.4:3000/owners/new (200 OK)
+	http://172.18.0.4:3000/owners/new (200 OK)
+	http://172.18.0.4:3000/owners/new (200 OK)
+WARN-NEW: Content Security Policy (CSP) Header Not Set [10038] x 9 
+	http://172.18.0.4:3000 (200 OK)
+	http://172.18.0.4:3000/ (200 OK)
+	http://172.18.0.4:3000/owners/find (200 OK)
+	http://172.18.0.4:3000/owners/new (200 OK)
+	http://172.18.0.4:3000/owners?lastName=ZAP (200 OK)
+WARN-NEW: Non-Storable Content [10049] x 11 
+	http://172.18.0.4:3000/oups (500 Internal Server Error)
+	http://172.18.0.4:3000 (200 OK)
+	http://172.18.0.4:3000/ (200 OK)
+	http://172.18.0.4:3000/owners/find (200 OK)
+	http://172.18.0.4:3000/owners/new (200 OK)
+WARN-NEW: Permissions Policy Header Not Set [10063] x 10 
+	http://172.18.0.4:3000 (200 OK)
+	http://172.18.0.4:3000/ (200 OK)
+	http://172.18.0.4:3000/owners/find (200 OK)
+	http://172.18.0.4:3000/owners/new (200 OK)
+	http://172.18.0.4:3000/owners?lastName=ZAP (200 OK)
+WARN-NEW: Absence of Anti-CSRF Tokens [10202] x 4 
+	http://172.18.0.4:3000/owners/find (200 OK)
+	http://172.18.0.4:3000/owners/new (200 OK)
+	http://172.18.0.4:3000/owners?lastName=ZAP (200 OK)
+	http://172.18.0.4:3000/owners/new (200 OK)
+WARN-NEW: Sub Resource Integrity Attribute Missing [90003] x 12 
+	http://172.18.0.4:3000 (200 OK)
+	http://172.18.0.4:3000 (200 OK)
+	http://172.18.0.4:3000/ (200 OK)
+	http://172.18.0.4:3000/ (200 OK)
+	http://172.18.0.4:3000/owners/find (200 OK)
+WARN-NEW: Application Error Disclosure [90022] x 1 
+	http://172.18.0.4:3000/oups (500 Internal Server Error)
+FAIL-NEW: 0	FAIL-INPROG: 0	WARN-NEW: 12	WARN-INPROG: 0	INFO: 0	IGNORE: 0	PASS: 54
+[Pipeline] echo
+Ignore error during ZAP script.
+[Pipeline] sh
++ pwd
+/var/jenkins_home/workspace/spring-petclinic-pipeline
+[Pipeline] sh
++ ls
+Jenkinsfile
+LICENSE.txt
+build.gradle
+deploy.yml
+docker-compose.yml
+dummy.txt
+gradle
+gradlew
+gradlew.bat
+inventory
+java_pid.txt
+mvnw
+mvnw.cmd
+pom.xml
+readme.md
+settings.gradle
+src
+target
+testreport.html
+zap.yaml
+[Pipeline] sh
++ docker cp owasp-zap:/zap/wrk/testreport.html /var/jenkins_home/workspace/spring-petclinic-pipeline/testreport.html
+[Pipeline] sh
++ cat java_pid.txt
++ kill 5973
+[Pipeline] sh
++ docker stop owasp-zap
+owasp-zap
+[Pipeline] sh
++ docker rm owasp-zap
+owasp-zap
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy to EC2)
+[Pipeline] ansiblePlaybook
+[spring-petclinic-pipeline] $ ansible-playbook deploy.yml -i inventory --private-key /var/jenkins_home/workspace/spring-petclinic-pipeline/ssh6243472948463261800.key -u ubuntu
+
+PLAY [web] *********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [ec2-3-15-236-156.us-east-2.compute.amazonaws.com]
+
+TASK [Install Java] ************************************************************
+ok: [ec2-3-15-236-156.us-east-2.compute.amazonaws.com]
+
+TASK [Copy application jar to EC2] *********************************************
+changed: [ec2-3-15-236-156.us-east-2.compute.amazonaws.com]
+
+TASK [Copy systemd service file] ***********************************************
+ok: [ec2-3-15-236-156.us-east-2.compute.amazonaws.com]
+
+TASK [Start and enable the service] ********************************************
+changed: [ec2-3-15-236-156.us-east-2.compute.amazonaws.com]
+
+PLAY RECAP *********************************************************************
+ec2-3-15-236-156.us-east-2.compute.amazonaws.com : ok=5    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] publishHTML
+[htmlpublisher] Archiving HTML reports...
+[htmlpublisher] Archiving at BUILD level /var/jenkins_home/workspace/spring-petclinic-pipeline to /var/jenkins_home/jobs/spring-petclinic-pipeline/builds/2/htmlreports/OWASP_20ZAP_20Report
+[htmlpublisher] Copying recursive using current thread
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

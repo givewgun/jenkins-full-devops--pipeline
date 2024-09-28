@@ -1,0 +1,15 @@
+global:
+  scrape_interval:     15s # 
+
+# A scrape configuration containing exactly one endpoint to scrape:
+scrape_configs:  
+  - job_name: 'Jenkins'
+    metrics_path: /prometheus
+    scheme: http
+    tls_config:
+      insecure_skip_verify: true
+    static_configs:
+      - targets: ['jenkins:8080']
+    basic_auth:
+      username: 'admin'
+      password: 'admin'
